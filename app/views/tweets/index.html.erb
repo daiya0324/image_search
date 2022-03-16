@@ -1,0 +1,15 @@
+<%=
+require "google/cloud/vision"
+
+image_annotator = Google::Cloud::Vision.image_annotator
+
+file_path = "https://ysoffice-itmedia.com/wp1/wp-content/uploads/saloninsta.jpg"
+
+response = image_annotator.text_detection(image: file_path)
+
+response.responses.each do |res|
+  res.text_annotations.each do |text|
+    p text.description
+  end
+end
+%>
